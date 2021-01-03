@@ -18,4 +18,8 @@ def plot_trajectories(all_nodes, paths, trajs):
     for traj in trajs:
         cx, cy = traj
         plt.plot(cx(ts), cy(ts))
+
+    center_x, center_y = trajs[len(trajs)//2]
+    plt.plot(center_x(ts), center_y(ts), 'k', linewidth=2.0)
+
     plt.show()

@@ -103,7 +103,7 @@ def gen_splines(paths):
 
 
 
-def eval_trajectories(paths, n_interps=100, outfile=None):
+def eval_trajectories(paths, n_interps=50, outfile=None):
     '''
     Evaluate all trajectories and save to json object
     '''

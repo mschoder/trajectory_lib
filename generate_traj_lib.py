@@ -1,5 +1,6 @@
 import itertools
 import argparse
+import time
 from helper_funcs import *
 
 """
@@ -12,6 +13,7 @@ TODO - add more comprehensive documentation
 # ---------------------------------------------------------------------------------
 # PARSE USER INPUT
 # --------------------------------------------------------------------------------
+start = time.process_time()
 
 parser = argparse.ArgumentParser(description='Generate Trajectory Library of C2 Cubic Splines')
 parser.add_argument('long_sep', metavar='long_sep', type=float, help='longitudinal separation between layers (meters)')
@@ -35,13 +37,15 @@ nodes = grid.gen_circ_grid(**params)
 paths = grid.get_paths(nodes, params)
 trajs = grid.gen_splines(paths)
 
+# Create output dictionary and save as json
+eval_trajs = grid.eval_trajectories(paths, outfile=args.outfile)
+end = time.process_time()
+elapsed = end - start
+
+print(f'Generated {len(trajs)} trajectories in {elapsed:.4f} sec')
+print(f'Saved trajectory output data to {args.outfile}')
+
 # Plot output
 if args.plot:
     all_nodes = list(itertools.chain.from_iterable(nodes))
     plotter.plot_trajectories(all_nodes, paths, trajs)
-
-# Create output dictionary and save as json
-eval_trajs = grid.eval_trajectories(paths, outfile=args.outfile)
-
-print(f'Generated {len(trajs)} trajectories.')
-print(f'Saved trajectory output data to {args.outfile}')
