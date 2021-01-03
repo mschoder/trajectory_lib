@@ -21,6 +21,16 @@ Example:
 
 `python generate_traj_lib.py  20 5 30 4 --plot=True`
 
+Parameters:
+```
+long_sep:   longitudinal separation between layers (meters)
+arc_sep:    approximate desired separation between adacent nodes along the arc (meters)
+th_spread:  angle on each side of zero heading from prev layer nodes (degrees)
+num_layers: number of concentric arcs, exclusive of origin point (integer)
+--outfile:  path to output file with .json suffix (default: ./traj_lib.json)
+--plot:     boolean flag to plot trajectories
+```
+
 ### Output Data Structure
 ```
 Dictionary of enumerated trajectories each of the form:
