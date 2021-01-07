@@ -95,7 +95,10 @@ def gen_splines(paths):
         x = np.array([p[0] for p in path])
         y = np.array([p[1] for p in path])
 
-        init_heading = np.arccos(path[1][0]/long_sep)
+        # init_heading = np.arccos(path[1][0]/long_sep)
+        # init_heading = 0
+        # print(init_heading)
+        init_heading = np.pi/2
         
         cx, cy = spline.calc_c2_traj(x, y, init_heading)
         trajs.append((cx, cy))
