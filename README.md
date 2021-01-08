@@ -3,6 +3,7 @@
 Working project to build a trajectory library using curvature-continuous (C2) cubic splines
 
 ![](example.png)
+*Note inverted Y-coordinates. Outputted trajectory library is symmetric, but paths are displayed in the image above in track coordinates relative to the car
 
 
 ### Dependencies
@@ -28,6 +29,7 @@ arc_sep:       approximate desired separation between adacent nodes along the ar
 th_spread:     angle on each side of zero heading from prev layer nodes (degrees)
 num_layers:    number of concentric arcs, exclusive of origin point (integer)
 --num_interps: number of interpolated points evaluated for each trajectory (integer)
+               [defaults to computing a stepsize that gives approx 0.5m path interpolation]
 --outfile:     path to output file with .json suffix (default: ./traj_lib.json)
 --plot:        boolean flag to plot trajectories
 ```

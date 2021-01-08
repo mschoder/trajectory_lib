@@ -35,8 +35,8 @@ def gen_circ_grid(long_sep, arc_sep, th_spread, num_layers):
         ths = np.linspace(-fan, fan, n_pts)
 
         for th in ths:
-            x = r * np.sin(th)
-            y = r * np.cos(th)
+            x = r * np.cos(th)
+            y = r * np.sin(th)
             layer_nodes.append((x,y,th))
         nodes.append(layer_nodes)
     return nodes
@@ -96,9 +96,8 @@ def gen_splines(paths):
         y = np.array([p[1] for p in path])
 
         # init_heading = np.arccos(path[1][0]/long_sep)
-        # init_heading = 0
-        # print(init_heading)
-        init_heading = np.pi/2
+        init_heading = 0  # fix all initial headings to be zero (in car's frame)
+     
         
         cx, cy = spline.calc_c2_traj(x, y, init_heading)
         trajs.append((cx, cy))

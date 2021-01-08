@@ -54,7 +54,7 @@ def calc_c2_traj(x, y, init_heading, eps = 0.005):
     return cx, cy
 
 
-def calc_spline_length(x_coeffs, y_coeffs, n_ips=20):
+def calc_spline_length(x_coeffs, y_coeffs, n_ips=100):
     '''
     Returns numerically computed length along cubic spline
     x_coeffs: array of 4 x coefficients
@@ -83,7 +83,7 @@ def compute_spline_heading(x, y, t):
         t = path variable, a 1D numpy array
 
     '''
-    psi = np.arctan2(x(t,1), y(t,1))
+    psi = np.arctan2(y(t,1), x(t,1))
     psi[psi >= np.pi] -= 2 * np.pi
     psi[psi < -np.pi] += 2 * np.pi
     return psi
