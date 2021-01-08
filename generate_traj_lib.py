@@ -34,10 +34,11 @@ params = {
    'num_layers': args.num_layers 
 }
 
+
+base_path_len = 1.3 * args.num_layers * args.long_sep
 # Compute default interpolation stepsize == 0.5m
 if args.num_interps is None:
    stepsize = 0.5
-   base_path_len = 1.3 * args.num_layers * args.long_sep
    num_interps = math.ceil(base_path_len / stepsize)
 else:
    num_interps = args.num_interps
